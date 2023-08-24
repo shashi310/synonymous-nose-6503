@@ -1,26 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from "../homeImg/logo.png";
+import logo from "../homeImg/logo2.jpg";
 const Navbar = () => {
   return (
     <Div>
+     <div>
+     <img src={logo} alt="logo" />
+     </div>
+       
      
-        <img src={logo} alt="" />
-     
-      <div>
+      {/* <div>
         <button>Explore</button>
-      </div>
+      </div> */}
       <div className="search">
-        <input type="text" />
+        <input type="text" 
+        placeholder='what do you want to learn?'
+        />
         <button> <SearchIcon>&#128269;</SearchIcon></button>
       </div>
       <div>
-        <select name="" id="">
+        <select name=""  className="hover-select">
           <option value="">Online Degrees</option>
         </select>
       </div>
       <div>Find your New Career</div>
-      <div>Login</div>
+      {/* <div>Login</div> */}
       <div>
         <button>Join for free</button>
       </div>
@@ -31,8 +35,8 @@ const Navbar = () => {
 export default Navbar;
 
 const SearchIcon = styled.span`
-  font-size: 1.2rem;
-  margin-left: 5px;
+  font-size: 0.7rm;
+  margin-left: 4px;
 `;
 const Div = styled.nav`
   display: flex;
@@ -43,6 +47,10 @@ const Div = styled.nav`
   color: black;
 
   > div {
+    width:20%;
+    text-align:center;
+    align-items: center;
+    /* border: 1px solid black; */
     margin: 0 10px;
   }
   .search {
@@ -50,8 +58,7 @@ const Div = styled.nav`
     align-items: center;
   }
   img {
-    width: 200px;
-    height:100px;
+   width: 100%;
   }
 
   button,
@@ -70,17 +77,22 @@ const Div = styled.nav`
   }
 
   input[type='text'] {
-    width: 150px;
+    background-color:white;
+    border: 1px solid blue;
+    width: 70%;
   }
 
   select {
-    width: 200px;
+    width: 60%;
   }
 
   .search {
     display: flex;
     align-items: center;
   }
+
+  
+  
 
   @media only screen and (max-width: 576px) {
     flex-direction: column;
