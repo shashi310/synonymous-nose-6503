@@ -47,4 +47,18 @@ const Div = styled.div `
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
 }
+@media only screen and (max-width: 576px) {
+    width:100%;
+    .slider-image {
+  width: fit-content;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+    
+  }
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    /* Additional styling for small screens */
+    width: 150%;
+  }
 `

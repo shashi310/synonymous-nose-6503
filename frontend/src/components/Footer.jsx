@@ -133,6 +133,11 @@ align-self:center;
   justify-content: space-around;
   width: 100%;
   /* margin: 0 auto; */
+  @media only screen and (max-width: 576px) {
+    flex-direction: column;
+margin-left:20px;
+    
+  }
 }
 
 .footer-column { 
@@ -157,4 +162,10 @@ width: 100%;
   text-align: center;
   margin-top: 20px;
 }
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    /* Additional styling for small screens */
+    width: 150%;
+  }
+
 `;

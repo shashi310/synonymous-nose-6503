@@ -42,7 +42,7 @@ const Div = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  /* padding: 20px; */
  
   color: black;
 
@@ -83,7 +83,7 @@ const Div = styled.nav`
   }
 
   select {
-    width: 60%;
+    width: 70%;
   }
 
   .search {
@@ -92,12 +92,17 @@ const Div = styled.nav`
   }
 
   
-  
+  :hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
 
   @media only screen and (max-width: 576px) {
     flex-direction: column;
 
     > div {
+      width: 90%;
+      margin:auto;
+      /* border: 1px solid black; */
       margin: 10px 0;
     }
 
@@ -109,6 +114,7 @@ const Div = styled.nav`
 
   @media only screen and (min-width: 577px) and (max-width: 768px) {
     /* Additional styling for small screens */
+    width: 150%;
   }
 
   @media only screen and (min-width: 769px) and (max-width: 992px) {
