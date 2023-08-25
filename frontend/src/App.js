@@ -1,9 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
 import MainRoute from './routes/MainRoute';
 
-import SignUp from './components/Signup';
-import Login from './components/Login';
 
 
 function App() {
@@ -11,8 +9,7 @@ function App() {
     <div >
      
      <MainRoute />
-     <SignUp />
-     <Login />
+    
     </div>
   );
 }
