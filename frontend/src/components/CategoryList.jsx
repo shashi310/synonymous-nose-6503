@@ -39,17 +39,27 @@ const CategoryList = () => {
 
 const Wrapper = styled.div`
   padding: 20px;
+  @media only screen and (min-width: 577px) and (max-width: 768px) {
+    /* Additional styling for small screens */
+    padding: 10px;
+  }
 `;
 
 const Heading = styled.h2`
+font-size:30px;
+font-weight:bold;
   text-align: center;
   margin-bottom: 20px;
 `;
 
 const CardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  @media only screen and (min-width: 577px) and (max-width: 768px) {
+    /* Additional styling for small screens */
+    width: 150%;
+  }
 `;
 
 const Card = styled.div`
@@ -57,6 +67,9 @@ const Card = styled.div`
   padding: 20px;
   border-radius: 5px;
   text-align: center;
+  :hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
 `;
 
 const CardImage = styled.img`
@@ -64,6 +77,7 @@ const CardImage = styled.img`
   max-height: 150px;
   object-fit: cover;
   border-radius: 5px 5px 0 0;
+  
 `;
 
 const CardContent = styled.div`
@@ -71,5 +85,7 @@ const CardContent = styled.div`
   padding: 15px;
   border-radius: 0 0 5px 5px;
   text-align: center;
+ 
+ 
 `;
 export default CategoryList;

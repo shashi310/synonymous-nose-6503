@@ -49,11 +49,23 @@ button {
 }
 
 .banner-content h2 {
-  font-size: 50px;
+  font-size: 40px;
   margin-bottom: 10px;
 }
 
 .banner-content p {
   font-size: 20px;
 }
+@media only screen and (max-width: 576px) {
+    flex-direction: column;
+
+    
+  }
+  :hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+    /* Additional styling for small screens */
+    width: 150%;
+  }
 `
