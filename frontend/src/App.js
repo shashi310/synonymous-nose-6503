@@ -1,13 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import MainRoute from './routes/MainRoute';
-import Homepage from './pages/Homepage';
+
+import SignUp from './components/Signup';
+import Login from './components/Login';
+
 
 function App() {
   return (
     <div >
-      <Homepage/>
+     
      <MainRoute />
+     <SignUp />
+     <Login />
     </div>
   );
 }
