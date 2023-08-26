@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const { blacklist } = require("../Middleware/BlacklistAuth.middleware");
 const multer = require("multer");
 const { auth } = require("../Middleware/Authorization.middleware");
-const {BlacklistModel}=require("../models/blacklist.model")
+const { BlacklistModel } = require("../models/blacklist.model");
 
 const userRouter = express.Router();
 
@@ -72,7 +72,6 @@ userRouter.post("/register", async (req, res) => {
 // FRONTEND: when Admin/user/teacher want to login
 
 userRouter.post("/login", async (req, res) => {
-  
   const { email, password } = req.body;
   try {
     const findUser = await UserModel.findOne({ email });
@@ -81,8 +80,12 @@ userRouter.post("/login", async (req, res) => {
       bcrypt.compare(password, findUser.password, async (err, result) => {
         if (result) {
           jwt.sign(
-            { userID: findUser._id, userName: findUser.name,role: findUser.role},
-            process.env.secrete,
+            {
+              userID: findUser._id,
+              userName: findUser.name,
+              role: findUser.role,
+            },
+            "masai",
             { expiresIn: "7d" },
             (err, token) => {
               if (token) {
@@ -105,8 +108,6 @@ userRouter.post("/login", async (req, res) => {
   } catch (error) {
     res.status(400).json({ error });
   }
-
-
 });
 
 //updation
@@ -161,9 +162,9 @@ userRouter.delete("/delete/:userId", auth, async (req, res) => {
 // Access: All
 // EndPoint: /users/logout
 // FRONTEND: when users want to logout
-userRouter.post("/logout",auth, async(req, res) => {
+userRouter.post("/logout", auth, async (req, res) => {
   const token = req.headers.authorization?.split(" ")[1];
-  const { userID, userName,role } = req.body;
+  const { userID, userName, role } = req.body;
 
   try {
     const blacklist = await BlacklistModel.findOne({ userID });
@@ -221,11 +222,11 @@ userRouter.get("/userCourse/:userId", async (req, res) => {
 userRouter.post("/addCourse/:courseId", auth, async (req, res) => {
   try {
     // let id = req.body.userId;
-    const { userID, userName,role } = req.body;
+    const { userID, userName, role } = req.body;
     // console.log(userID);
     // const courseId = req.params.courseId;
-  
-    const {courseId} = req.params
+
+    const { courseId } = req.params;
 
     // check is that course is already present or not;
     await UserModel.findOne({ _id: userID, course: { $in: [courseId] } })
