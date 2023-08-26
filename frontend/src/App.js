@@ -1,15 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import MainRoute from './routes/MainRoute';
-import SignUp from './components/Signup';
-import Login from './components/Login';
+import Admin from './Admin/Admin';
+import AdminUsers from './Admin/AdminUsers';
+
+
+
 
 function App() {
   return (
     <div >
      <MainRoute />
-     <SignUp />
-     <Login />
+      {/* <Admin /> */}
+      
+     
     </div>
   );
 }

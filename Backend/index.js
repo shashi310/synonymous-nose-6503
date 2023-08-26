@@ -1,6 +1,7 @@
 const express = require("express");
 const { connection } = require("./db");
 const { userRouter } = require("./routes/users.routes");
+const { courseRouter } = require("./routes/course.routes");
 
 const cors = require('cors')
 
@@ -15,6 +16,7 @@ app.use(cors())
 app.use(express.json());
 
 app.use("/users", userRouter);
+app.use("/courses", courseRouter);
 
 app.listen(process.env.port, async () => {
   try {
