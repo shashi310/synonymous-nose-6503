@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components';
 import { Avatar, Badge } from '@chakra-ui/react'
 import Navbar from '../components/Navbar';
+
 import { Link } from 'react-router-dom';
 const SingleCoursePage = () => {
   const [singleData, setSingleData] = useState(null);
@@ -15,9 +16,25 @@ const SingleCoursePage = () => {
       console.error('Error fetching data:', error);
     }
   };
+
 useEffect(()=>{ 
-  fetchData();
+
+  console.log(id)
+  fetch("https://energetic-wasp-hose.cyclic.cloud/courses",{
+            headers:{
+                "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
+            }
+        }).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+            setData(res.Courses
+                )
+        }) 
 }, []);
+
+
+
    const {
       img,
       university,

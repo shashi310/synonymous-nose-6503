@@ -2,21 +2,24 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-const Card=({ image, university, title, earn, type })=>{
 
-  const navigate=useNavigate()
 
+
+const Card=({ _id,img,rating,Degrees,university,
+  course,Earn})=>{
+
+ 
 
   return (
   
-    <Link to={`/dashboard/${1}`}>
+    <Link to={`/dashboard/${_id}`}>
 
 <div className="cart" >
-        <img src={image} alt={title} />
+        <img src={img} alt={"imag"} />
         <p className='university'>{university}</p>
-        <p className='title'>{title}</p>
-        <p className='earn'>{earn}</p>
-        <p className='type'>{type}</p>
+        <p className='title'>{course}</p>
+        <p className='earn'>Earn a {Earn}</p>
+        <p className='type'>{Earn}</p>
     </div>
     </Link>
     

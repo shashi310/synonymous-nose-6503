@@ -1,127 +1,55 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
 import Card from './Card'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCourses } from '../redux/UserReducer/action'
 
 
 
 
-// const Card = ({ image, university, title, earn, type }) => (
-//     <div className="cart">
-//         <img src={image} alt={title} className="card-image" />
-//         <p className='university'>{university}</p>
-//         <p className='title'>{title}</p>
-//         <p className='earn'>{earn}</p>
-//         <p className='type'>{type}</p>
-//     </div>
-// );
 
-
-const data = [
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-    {
-        image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://s3.amazonaws.com/coursera_assets/ddp/branding/pgdm-spjimr/f68db508-5619-402b-adcb-07f5f4af90c2.jpg?auto=format%2Ccompress%2C%20enhance&dpr=1&w=265&h=204&fit=crop&q=50",
-        university: "University of Mumbai",
-        title: "Bachlor of Science",
-        earn: "Earn Degree",
-        type: "Degree"
-
-    },
-]
 const Dashboard = () => {
     const [showAll, setShowAll] = useState(false);
+    const [data,setData]=useState([])
+  
+
+    const stData=useSelector((store)=>{
+        console.log(store)
+        return store
+    })
+    console.log("stroe",stData)
+
+    const dispatch=useDispatch()
 
     const toggleShowAll = () => {
         setShowAll(!showAll);
     };
+
+
+    useEffect(()=>{
+       
+        fetch("https://energetic-wasp-hose.cyclic.cloud/courses",{
+            headers:{
+                "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
+            }
+        }).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+            setData(res.Courses
+                )
+        })
+
+
+        dispatch(getCourses())
+    
+        
+        
+    },[])
+
 
 
     return (
@@ -159,7 +87,11 @@ const Dashboard = () => {
                 <p className='App-earn'>Earn Your Degree</p>
                 <div className="card-container">
                     {data.slice(0, showAll ? data.length : 4).map((course, index) => (
-                        <Card key={index} {...course} />
+                        <Card 
+                        key={index}
+                        {...course}
+                        Earn="Degrees 🎓"
+                        />
                     ))}
                 </div>
                 <button onClick={toggleShowAll} className="show-button">
@@ -172,38 +104,12 @@ const Dashboard = () => {
             <div className="App">
                 <p className='App-earn'>Most Popular Certificates</p>
                 <div className="card-container">
-                    {data.slice(0, showAll ? data.length : 4).map((course, index) => (
-                        <Card key={index} {...course} />
-                    ))}
-                </div>
-                <button onClick={toggleShowAll} className="show-button">
-                    {showAll ? 'Show Less' : 'Show More'}
-                </button>
-            </div>
-
-
-
-            {/* ------------------------------------Recently Viewed Courses and Specializations------------------- */}
-
-            <div className="App">
-                <p className='App-earn'></p>
-                <div className="card-container">
-                    {data.slice(0, showAll ? data.length : 4).map((course, index) => (
-                        <Card key={index} {...course} />
-                    ))}
-                </div>
-                <button onClick={toggleShowAll} className="show-button">
-                    {showAll ? 'Show Less' : 'Show More'}
-                </button>
-            </div>
-
-
-            {/* -------------------------------------------------New on Coursera--------------------------- */}
-            <div className="App">
-                <p className='App-earn'></p>
-                <div className="card-container">
-                    {data.slice(0, showAll ? data.length : 4).map((course, index) => (
-                        <Card key={index} {...course} />
+                    {data.reverse().slice(0, showAll ? data.length : 4).map((course, index) => (
+                        <Card
+                         key={index}
+                        {...course}
+                        Earn="Cetificates 📜"
+                        />
                     ))}
                 </div>
                 <button onClick={toggleShowAll} className="show-button">
@@ -243,18 +149,9 @@ const Dashboard = () => {
 
 
 
-            {/* -------------------------------------------------New on Coursera--------------------------- */}
-            <div className="App">
-                <p className='App-earn'></p>
-                <div className="card-container">
-                    {data.slice(0, showAll ? data.length : 4).map((course, index) => (
-                        <Card key={index} {...course} />
-                    ))}
-                </div>
-                <button onClick={toggleShowAll} className="show-button">
-                    {showAll ? 'Show Less' : 'Show More'}
-                </button>
-            </div>
+
+
+
 
 
 {/* ----------------------------------------------footer----------------------------- */}
@@ -400,12 +297,19 @@ const DIV = styled.div`
     font-size:large;
     margin-top:10px;
     font-weight:bolder;
+    flex-wrap: wrap;
+    white-space: nowrap; 
+  width: max-content; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  
 }
 .earn{
     text-align:left;
     font-weight:lighter;
     margin-top:20px;
     color:blue;
+   
 }
 .type{
     margin-top:8px;
@@ -426,6 +330,41 @@ const DIV = styled.div`
 
 .show-button:hover {
   background-color: #0056b3;
+}
+
+
+
+
+@media only screen and (min-width: 450px){
+
+    .welcome_sub{
+        position: relative;
+        height: 100%;
+    }
+
+    .wlc_txt{
+        color: #166dd1;
+        position:absolute;
+        top:10px;
+        left: 20%;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-size:20px;
+    }
+    .about_yourself{
+        display: flex;
+        gap:10px;
+        margin:auto;
+        position: absolute;
+        width: 40%;
+        height: 80%;
+        right:11%;
+        top:25px;
+        box-shadow: rgba(77, 112, 219, 0.2) 0px 2px 8px 0px;
+        white-space: pre;
+
+       
+    }
+
 }
 
     
