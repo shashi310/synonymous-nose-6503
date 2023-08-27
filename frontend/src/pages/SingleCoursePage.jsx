@@ -2,21 +2,36 @@ import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components';
 import { Avatar, Badge } from '@chakra-ui/react'
 import Navbar from '../components/Navbar';
+import { useParams } from 'react-router-dom';
+
+
 const SingleCoursePage = () => {
-  const [singleData, setSingleData] = useState(null);
-  const dataId = 123; 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`your-api-url/${dataId}`);
-      const data = await response.json();
-      setSingleData(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  const [data,setData]=useState([])
+  const [singleData, setSingleData] = useState({});
+  
+  const {id}=useParams() 
+  console.log(id)
+
+  
+
 useEffect(()=>{ 
-  fetchData();
+
+  console.log(id)
+  fetch("https://energetic-wasp-hose.cyclic.cloud/courses",{
+            headers:{
+                "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
+            }
+        }).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+            setData(res.Courses
+                )
+        }) 
 }, []);
+
+
+
    const {
       img,
       university,

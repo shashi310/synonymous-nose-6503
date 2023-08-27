@@ -16,10 +16,11 @@ app.use(express.json());
 
 app.use("/users", userRouter);
 
-app.listen(process.env.port, async () => {
+//process.env.port
+app.listen(8080, async () => {
   try {
     await connection;
-    console.log(`connected to db \nrunning at port ${process.env.port}`);
+    console.log(`connected to db \nrunning at port 8080`);
   } catch (error) {
     console.log(`error: ${error}`);
   }
