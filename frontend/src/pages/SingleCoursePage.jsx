@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components';
 import { Avatar, Badge } from '@chakra-ui/react'
 import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
 const SingleCoursePage = () => {
   const [singleData, setSingleData] = useState(null);
   const dataId = 123; 
   const fetchData = async () => {
     try {
-      const response = await fetch(`your-api-url/${dataId}`);
+      const response = await fetch(`https://energetic-wasp-hose.cyclic.cloud/courses/${dataId}`);
       const data = await response.json();
       setSingleData(data);
     } catch (error) {
@@ -119,7 +120,7 @@ useEffect(()=>{
        
         <Badge colorScheme='purple'>Discount 87% off</Badge>
         <p>5 days left at this price!</p>
-        <button className="enroll-button">Buy Now</button>
+        <button className="enroll-button"><Link to="/payment">Buy Now</Link></button>
         
         <p>30-Day Money-Back Guarantee</p>
         <p>This course includes:</p>
