@@ -9,6 +9,7 @@ import img5 from "../homeImg/IT.png";
 import img6 from "../homeImg/P.png";
 import img7 from "../homeImg/Business.png";
 import img8 from "../homeImg/photography.png";
+import { Link } from 'react-router-dom';
 const categories = [
   {img:img1,title:"Design"},
   {img:img2,title:"Development"},
@@ -27,10 +28,10 @@ const CategoryList = () => {
       <Heading>Top Categories</Heading>
       <CardContainer>
         {categories.map(category => (
-          <Card key={category}>
+        <Link to="/dashboard" >  <Card key={category}>
             <CardImage src={`${category.img}`} alt={category.title} />
             <CardContent>{category.title}</CardContent>
-          </Card>
+          </Card></Link>
         ))}
       </CardContainer>
     </Wrapper>

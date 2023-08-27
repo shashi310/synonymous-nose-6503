@@ -6,6 +6,7 @@ import Login from '../components/Login'
 import Dashboard from '../pages/Dashboard'
 import SinglePage from '../pages/SinglePage'
 import SingleCoursePage from '../pages/SingleCoursePage'
+import PaymentPage from '../pages/Payment'
 
 const MainRoute = () => {
   return (
@@ -16,6 +17,7 @@ const MainRoute = () => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/dashboard/:id' element={<SingleCoursePage/>}/>
+        <Route path='/payment' element={<PaymentPage/>}/>
       </Routes>
     </div>
   )
