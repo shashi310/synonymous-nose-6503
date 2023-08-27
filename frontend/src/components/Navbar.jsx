@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from "../homeImg/logo2.jpg";
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <Div>
      <div>
+     <Link to="/login" >
      <img src={logo} alt="logo" />
+     </Link>
      </div>
        
      
@@ -23,10 +26,10 @@ const Navbar = () => {
           <option value="">Online Degrees</option>
         </select>
       </div>
-      <div>Find your New Career</div>
+      <div><Link to="/dashboard">Find your New Career</Link></div>
       {/* <div>Login</div> */}
       <div>
-        <button>Join for free</button>
+        <button><Link to="/login" >Join for free</Link></button>
       </div>
     </Div>
   );
