@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import logo from "../homeImg/logo2.jpg";
 import { Link } from 'react-router-dom';
+
+
 const Navbar = () => {
   return (
     <Div>
      <div>
-     <Link to="/login" >
+     <Link to="/" >
      <img src={logo} alt="logo" />
      </Link>
      </div>
@@ -40,11 +42,16 @@ export default Navbar;
 const SearchIcon = styled.span`
   font-size: 0.7rm;
   margin-left: 4px;
+  
 `;
 const Div = styled.nav`
+box-sizing: 0px;
+  padding:0px;
+  margin: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   /* padding: 20px; */
  
   color: black;

@@ -124,7 +124,9 @@ const Dashboard = () => {
                 <p className='App-earn'></p>
                 <div className="card-container">
                     {data.slice(0, showAll ? data.length : 4).map((course, index) => (
-                        <Card key={index} {...course} />
+                        <Card key={index} {...course} 
+                        Earn={"New Courses"}
+                        />
                     ))}
                 </div>
                 <button onClick={toggleShowAll} className="show-button">
@@ -132,20 +134,6 @@ const Dashboard = () => {
                 </button>
             </div>
 
-
-
-            {/* -------------------------------------------------New on Coursera--------------------------- */}
-            <div className="App">
-                <p className='App-earn'></p>
-                <div className="card-container">
-                    {data.slice(0, showAll ? data.length : 4).map((course, index) => (
-                        <Card key={index} {...course} />
-                    ))}
-                </div>
-                <button onClick={toggleShowAll} className="show-button">
-                    {showAll ? 'Show Less' : 'Show More'}
-                </button>
-            </div>
 
 
 
