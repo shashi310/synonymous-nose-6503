@@ -5,6 +5,7 @@ import SignUp from '../components/Signup'
 import Login from '../components/Login'
 import Dashboard from '../pages/Dashboard'
 import SinglePage from '../pages/SinglePage'
+import SingleCoursePage from '../pages/SingleCoursePage'
 
 const MainRoute = () => {
   return (
@@ -14,7 +15,7 @@ const MainRoute = () => {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/dashboard/:id' element={<SinglePage/>}/>
+        <Route path='/dashboard/:id' element={<SingleCoursePage/>}/>
       </Routes>
     </div>
   )

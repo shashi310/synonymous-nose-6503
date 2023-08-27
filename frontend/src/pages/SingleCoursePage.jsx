@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components';
-import { Avatar } from '@chakra-ui/react'
+import { Avatar, Badge } from '@chakra-ui/react'
+import Navbar from '../components/Navbar';
 const SingleCoursePage = () => {
+  const [singleData, setSingleData] = useState(null);
+  const dataId = 123; 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`your-api-url/${dataId}`);
+      const data = await response.json();
+      setSingleData(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+useEffect(()=>{ 
+  fetchData();
+}, []);
    const {
       img,
       university,
@@ -20,9 +35,21 @@ const SingleCoursePage = () => {
     } = courseData;
   
   return (
+    <>
+    <Divv >
+    <Navbar/>
+    </Divv>
+  
    <Div className="single-course">
-   <img src={img} alt="Course" />
+
+  
+   <div className="course-card">
    <h1>{course}</h1>
+   <img src={img} alt="Course" />
+   {/* <div className="image-container">
+        <img src={img} alt="Course" />
+      </div> */}
+ 
    <p>University: {university}</p>
    <p>Start Date: {start_from}</p>
    <p>Total Enrolled: {total_enrolled}</p>
@@ -32,17 +59,18 @@ const SingleCoursePage = () => {
   Rating: {rating}
 </p>
    <p>Reviews: {reviews}</p>
-
+   </div>
+   <div className="course-details">
    <h2>Course Details</h2>
    <p>Duration: {course_duration}</p>
    <p>Skills: {skills.join(', ')}</p>
    <h3>Modules:</h3>
-   <ul>
+   <ul className="modules-list">
      {modules.map((module, index) => (
        <li key={index}>{module}</li>
      ))}
    </ul>
-
+   </div>
    <h2>Student Reviews</h2>
    <div className="reviews">
      {reviews_txt.map((review, index) => (
@@ -55,7 +83,8 @@ const SingleCoursePage = () => {
        </div>
      ))}
    </div>
-
+   <div className="sidebyside">
+   <div className="recommended-courses">
    <h2>Recommended Courses</h2>
    <ul>
      {Recommended.map((course, index) => (
@@ -65,7 +94,9 @@ const SingleCoursePage = () => {
        </li>
      ))}
    </ul>
+</div>
 
+<div className="degrees">
    <h2>Degrees</h2>
    <ul>
      {Degrees.map((degree, index) => (
@@ -75,19 +106,107 @@ const SingleCoursePage = () => {
        </li>
      ))}
    </ul>
+   </div>
+   </div>
+   <div className="vertical-card">
+      <div className="card-content">
+      <video controls>
+          <source src="your-video-source.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <h2>₹429</h2>
+        <p>Original Price ₹3,299</p>
+       
+        <Badge colorScheme='purple'>Discount 87% off</Badge>
+        <p>5 days left at this price!</p>
+        <button className="enroll-button">Buy Now</button>
+        
+        <p>30-Day Money-Back Guarantee</p>
+        <p>This course includes:</p>
+        <ul>
+          <li>62 hours on-demand video</li>
+          <li>Access on mobile and TV</li>
+          <li>Full lifetime access</li>
+          <li>Certificate of completion</li>
+        </ul>
+      </div>
+    </div>
  </Div>
+ </>
 );
 }
-
+const Divv = styled.div`
+  width:900px;
+  position: sticky;
+  top: 0;
+  background-color:#fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for styling */
+  z-index: 100;
+`
 const Div = styled.div`
   
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 860px;
+  margin: 0px 40px;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 
+  .course-card {
+    background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .image-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 15px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+
+  p {
+    margin: 5px 0;
+    color: #666;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #f39c12;
+    margin-top: 10px;
+
+    svg {
+      margin-right: 5px;
+    }
+  }
+}
 
  img {
   max-width: 100%;
@@ -139,6 +258,25 @@ const Div = styled.div`
   margin: 10px 0;
 }
 
+.course-details {
+  margin-top: 20px;
+
+  h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  ul.modules-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: #666;
+  }
+
+  ul.modules-list li {
+    margin-bottom: 5px;
+  }
+}
 ul {
   list-style: none;
   padding: 0;
@@ -153,6 +291,113 @@ ul li {
   font-size: 20px;
   color: #f39c12;
 }
+.sidebyside {
+  display:flex;
+  margin:20px;
+  padding:10px;
+  /* box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset; */
+.recommended-courses {
+  margin-top: 20px;
+  padding: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  h3 {
+    font-size: 1.2rem;
+    
+    margin-top: 10px;
+    color: #333;
+  }
+
+  p {
+    margin: 5px 0;
+    color: #666;
+  }
+}
+  .degrees {
+  margin: 20px;
+  padding: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  h3 {
+    font-size: 1.2rem;
+    margin-left: 20px;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  p {
+    margin: 5px 0;
+    color: #666;
+  }
+
+}
+}
+
+.vertical-card {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 90vh;
+  width: 350px; /* Adjust the width as needed */
+  background-color: #f9f9f9;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+ 
+}
+
+.card-content {
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #e74c3c;
+  margin-top: 10px;
+}
+
+p {
+  margin: 5px 0;
+  color: #666;
+}
+
+ul {
+  text-align: left;
+  margin-left: 20px;
+  color: #666;
+}
+
+button.enroll-button {
+  width: 100%;
+  background-color:blue;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+button.enroll-button:hover {
+
+  background-color: #2980b9;
+}
+
+video {
+  width: 100%;
+  max-height: 200px;
+  margin-top: 20px;
+}
+
+/* Additional styling for the remaining details */
+.remaining-details {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
 `
 export default SingleCoursePage
 const courseData={
