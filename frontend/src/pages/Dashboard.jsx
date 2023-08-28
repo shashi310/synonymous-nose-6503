@@ -12,15 +12,15 @@ import { getCourses } from '../redux/UserReducer/action'
 
 
 const Dashboard = () => {
+
     const [showAll, setShowAll] = useState(false);
     const [data,setData]=useState([])
+
+   
   
 
-    const stData=useSelector((store)=>{
-        console.log(store)
-        return store
-    })
-    console.log("stroe",stData)
+   
+    
 
     const dispatch=useDispatch()
 
@@ -135,13 +135,6 @@ const Dashboard = () => {
             </div>
 
 
-
-
-
-
-
-
-
 {/* ----------------------------------------------footer----------------------------- */}
 
             <div>
@@ -170,7 +163,7 @@ const DIV = styled.div`
         background-color:blue;
         height: 230px;
         width: 100%;
-        background-color:#E3F2FD;
+        background-color:#bdd7ec;
     }
     .welcome_sub{
         position: relative;
@@ -220,7 +213,6 @@ const DIV = styled.div`
         cursor: pointer;
     }
 
-
     .about_yourself_2{
         padding: 10px;
     }
@@ -232,9 +224,6 @@ const DIV = styled.div`
         margin-top:8px;
         cursor: pointer;
     }
-
-
-   
 
 
     /* ----------------------------card---------------------------------- */
@@ -323,9 +312,10 @@ const DIV = styled.div`
 
 
 
-@media only screen and (min-width: 450px){
+@media only screen and (min-width: 0px) and (max-width: 450px){
 
     .welcome_sub{
+        width: 450px;
         position: relative;
         height: 100%;
     }
@@ -333,26 +323,63 @@ const DIV = styled.div`
     .wlc_txt{
         color: #166dd1;
         position:absolute;
-        top:10px;
-        left: 20%;
+        bottom:0px;
+        right: 50%;
         font-family:Verdana, Geneva, Tahoma, sans-serif;
-        font-size:20px;
+        font-size:24px;
     }
     .about_yourself{
         display: flex;
         gap:10px;
-        margin:auto;
         position: absolute;
-        width: 40%;
+        width: 80%;
         height: 80%;
-        right:11%;
-        top:25px;
+        left:0px;
+        top:5px;
         box-shadow: rgba(77, 112, 219, 0.2) 0px 2px 8px 0px;
         white-space: pre;
-
+        overflow:hidden;
        
     }
 
+    .cart {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius:6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+}
+
+
+
+
+@media only screen and (min-width: 450px) and (max-width: 900px){
+
+    .about_yourself{
+        display: flex;
+        gap:10px;
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        left:60px;
+        top:5px;
+        margin:auto;
+        box-shadow: rgba(77, 112, 219, 0.2) 0px 2px 8px 0px;
+        white-space: pre;
+        overflow:hidden;
+       
+    }
+
+.cart {
+  border: 1px solid #ccc;
+  padding: 30px;
+  border-radius:6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+    
 }
 
     

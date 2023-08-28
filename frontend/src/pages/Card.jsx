@@ -19,7 +19,7 @@ const Card=({ _id,img,rating,Degrees,university,
         <p className='university'>{university}</p>
         <p className='title'>{course}</p>
         <p className='earn'>Earn a {Earn}</p>
-        <p className='type'>{Earn}</p>
+        <p className='type'>{Earn==="New Courses"?"Expole":Earn}</p>
     </div>
     </Link>
     

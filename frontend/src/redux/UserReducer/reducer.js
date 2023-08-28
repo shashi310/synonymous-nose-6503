@@ -19,7 +19,7 @@ const reducer = (state = init,action)=>{
     switch(type){
         case LOGIN_LOADING : return {...state, isAuth:false,token:"",isError:"",loading:true}
         
-        case LOGIN_SUCCESS : return {...state,loading:false, isAuth:true,token:payload.token,name:payload.user.name,role:payload.user.role,email:payload.user.email}
+        case LOGIN_SUCCESS : return {...state,loading:false, isAuth:true,token:payload.token,}
 
         case LOGIN_ERROR : return {...state,loading:false,isAuth:false,isError:payload,token:''}
 

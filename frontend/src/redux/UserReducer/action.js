@@ -12,24 +12,44 @@ import {
   actionsingUpSuccess,
 } from "./actionType";
 
-let baseURL = "http://localhost:8080/";
+let baseURL = "https://energetic-wasp-hose.cyclic.cloud/";
+
+// export const loginFetch = (value) => (dispatch) => {
+//   dispatch(actionLoginLoading());
+//   return axios
+//     .post(`${baseURL}users/login`, value)
+//     .then((res) => {
+//       dispatch(actionLoginSuccess(res.data));
+//       localStorage.setItem(
+//         "user",
+//         JSON.stringify({email: res.data.user.email,name: res.data.user.name,role:res.data.user.role,token: res.data.token,isAuth: true})
+//       );
+//       console.log(res);
+//     })
+//     .catch((err) => {
+//       dispatch(actionLoginError(err.message));
+//       console.log(err);
+//     });
+// };
+
 
 export const loginFetch = (value) => (dispatch) => {
   dispatch(actionLoginLoading());
   return axios
-    .post(`${baseURL}users/login`, value)
+    .post(`${baseURL}/users/login`, value)
     .then((res) => {
+      console.log(res.data);
       dispatch(actionLoginSuccess(res.data));
       localStorage.setItem(
         "user",
-        JSON.stringify({email: res.data.user.email,name: res.data.user.name,role:res.data.user.role,token: res.data.token,isAuth: true})
+        JSON.stringify({token: res.data.token,isAuth: true,user:value.password})
       );
       console.log(res);
     })
     .catch((err) => {
       dispatch(actionLoginError(err.message));
       console.log(err);
-    });
+    });
 };
 
 
