@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import logo from "../homeImg/logo2.jpg";
 import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
+
   return (
     <Div>
      <div>
      <Link to="/" >
+
      <img src={logo} alt="logo" />
+
      </Link>
      </div>
        
@@ -138,4 +142,6 @@ box-sizing: 0px;
   @media only screen and (min-width: 1201px) {
     /* Additional styling for extra large screens */
   }
+
 `;
+

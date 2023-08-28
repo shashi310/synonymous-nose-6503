@@ -75,18 +75,18 @@ userRouter.post("/login", async (req, res) => {
   
   const { email, password } = req.body;
   try {
-    const findUser = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ email });
 
-    if (findUser) {
-      bcrypt.compare(password, findUser.password, async (err, result) => {
+    if (user) {
+      bcrypt.compare(password, user.password, async (err, result) => {
         if (result) {
           jwt.sign(
-            { userID: findUser._id, userName: findUser.name,role: findUser.role},
+            { userID: user._id, userName: user.name,role: user.role},
             process.env.secrete,
             { expiresIn: "7d" },
             (err, token) => {
               if (token) {
-                res.json({ msg: "User loggedIn.", token });
+                res.json({ msg: "User loggedIn.", token,user });
               } else {
                 res.json({ err: err.message });
                 return;

@@ -121,7 +121,7 @@ const SignUp = () => {
         top:'100px',
       render: () => (
         <Box color="white" p={3} bg="red.500">
-          {userStore.isError}
+          {/* {userStore.isError} */}
         </Box>
       ),
     });
@@ -159,10 +159,7 @@ const SignUp = () => {
       return;
     }
 
-    if (password.length < 8) {
-      dispatch(actionsingUpError('Password should be at least 8 characters long'));
-      return;
-    }
+  
 
     dispatch(signUpFetch(form))
       .then((res) => {
