@@ -33,8 +33,7 @@ const courseSchema = mongoose.Schema(
         deg: String,
       },
     ],
-    userID: String,
-    userName: String,
+
   },
   { versionKey: false }
 );

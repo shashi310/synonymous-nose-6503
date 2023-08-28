@@ -1,9 +1,10 @@
 import axios from "axios"
 import { ADD_PRODUCT_SUCCESS, ADD_User_SUCCESS,  GET_PRODUCT_SUCCESS, GET_User_SUCCESS, PATCH_PRODUCT_SUCCESS, PATCH_User_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionType"
 
-const token = JSON.parse(localStorage.getItem('user'))?.token || "";
+// const token = JSON.parse(localStorage.getItem('user'))?.token || "";
+const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyNTg1MSwiZXhwIjoxNjkzNzMwNjUxfQ.BlugfQEtyCNBJtBe3xSFgrZSK_d6t3oyx1UEXvFYTvU"
 
-const BaseURL="http://localhost:8080";
+const BaseURL="https://energetic-wasp-hose.cyclic.cloud";
 
 export const addProduct=(data)=>(dispatch)=>{
   dispatch({type:PRODUCT_REQUEST})
@@ -41,7 +42,7 @@ export const getProduct=()=>(dispatch)=>{
         Authorization:`Bearer ${token}`
       }
     }).then((res)=>{console.log("getProduct",res);
-    dispatch({type:GET_PRODUCT_SUCCESS,payload:res.data.course})
+    dispatch({type:GET_PRODUCT_SUCCESS,payload:res.data.Courses})
     }).catch(e=>dispatch({type:PRODUCT_FAILURE}))
    
 }
@@ -66,8 +67,8 @@ export const patchProduct=(id,data)=>(dispatch)=>{
       Authorization:`Bearer ${token}`
     },
     body:JSON.stringify(data)
-  }).then(res=>res.json()).then((res)=>{console.log("patch data is",res.course);
-      dispatch({type:PATCH_PRODUCT_SUCCESS,payload:res.course})
+  }).then(res=>res.json()).then((res)=>{console.log("patch data is",res.courses);
+      dispatch({type:PATCH_PRODUCT_SUCCESS,payload:res.courses})
   }).catch(e=>console.log(e))
 }
 export const patchUser=(id,data)=>(dispatch)=>{

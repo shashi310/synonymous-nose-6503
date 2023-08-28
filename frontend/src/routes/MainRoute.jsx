@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AdminDashboard from "../Admin/AdminDashboard";
 import AdminCourses from "../Admin/AdminCourses";
 import AdminUsers from "../Admin/AdminUsers";
+import Login from "../components/Login";
 
 
 
@@ -11,13 +12,14 @@ import AdminUsers from "../Admin/AdminUsers";
 const MainRoute = () => {
   return (
     <div>
-      <h1>MainRoute</h1>
+      
       <Routes>
         <Route path="/admin/dashboard" element= {AdminDashboard} />
         <Route path="/admin/courses" element= {AdminCourses} />
         <Route path="/admin/users" element= {AdminUsers} />
+        <Route path="/users" element= {<Login/>} />
       </Routes>
-<AdminUsers />
+
 
     </div>
   )
