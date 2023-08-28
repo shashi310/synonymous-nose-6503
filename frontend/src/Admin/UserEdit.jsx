@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import {  getUser } from '../redux/AdminReducer/action';
 import { patchUser } from '../redux/AdminReducer/action';
+import { useParams } from 'react-router-dom';
 const initialFormData = {
   name: '',
   email: '',
@@ -17,7 +18,9 @@ const initialFormData = {
 
 const UserEdit = () => {
 
-    let id="64eb6860527fb0c018fed42c"
+const {id}= useParams()
+
+    // let id="64eb6860527fb0c018fed42c"
     const users=useSelector((store)=>{
         return store.AdminReducer.users
       })
@@ -155,6 +158,12 @@ const DIV=styled.div`
  justify-content: center;
   align-items: center;
 margin: auto;
+
+
+form{
+  padding: 20px;
+}
+
 label{
     width: 100%;
     size: 22px;
@@ -178,14 +187,14 @@ input:focus {
 }
   button {
     margin-top: 20px;
-    width: 220px;
+    width: 100%;
     height: 40px;
     font-size: large;
     background-color: orange;
     font-size: 22px;
     border: none;
     justify-content: center;
-    margin-left: 150px;
+    
   }
   .check{
     size: 10px;

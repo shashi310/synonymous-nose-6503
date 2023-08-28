@@ -13,8 +13,8 @@ import {reducer as AdminReducer} from "./AdminReducer/reducer"
 const rootReducer=combineReducers({
 
 AdminReducer,
- CourseReducer,
-UserReducer
+UserReducer,
+CourseReducer,
 })
 
 const store=legacy_createStore(rootReducer,applyMiddleware(thunk))

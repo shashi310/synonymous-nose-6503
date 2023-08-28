@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import { Avatar, Badge } from '@chakra-ui/react'
 import Navbar from '../components/Navbar';
 import { Link, useParams } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -30,13 +30,22 @@ const SingleCoursePage = () => {
     }
   };
 
+
   useEffect(() => {
 
     fetchData(id)
+    
+    
 
   }, []);
 
 
+  const navigate = useNavigate();
+  const handelClick=()=>{
+    localStorage.setItem("price",singleData?.price)
+    navigate("/payment");
+  }
+  
   return (
     <>
       <Divv >
@@ -53,6 +62,7 @@ const SingleCoursePage = () => {
           <p>Start Date: {singleData?.start_from}</p>
           <p>Total Enrolled: {singleData?.total_enrolled}</p>
           <p>Instructor: {singleData?.instructor}</p>
+         
           <p>
             <i className="fas fa-star icon"></i>
             Rating: {singleData?.rating}
@@ -113,12 +123,12 @@ const SingleCoursePage = () => {
               <source src="your-video-source.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            <h2>₹429</h2>
+            <h2>₹{singleData?.price}</h2>
             <p>Original Price ₹3,299</p>
 
             <Badge colorScheme='purple'>Discount 87% off</Badge>
             <p>5 days left at this price!</p>
-            <button className="enroll-button"><Link to="/payment">Buy Now</Link></button>
+            <button className="enroll-button" onClick={handelClick}><Link to="/payment">Buy Now</Link></button>
 
             <p>30-Day Money-Back Guarantee</p>
             <p>This course includes:</p>
@@ -135,7 +145,7 @@ const SingleCoursePage = () => {
   );
 }
 const Divv = styled.div`
-  width:76%;
+  width:72%;
   position: sticky;
   top: 0;
   background-color:#E1F5FE;

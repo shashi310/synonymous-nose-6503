@@ -6,6 +6,7 @@ const Admin = () => {
     <div>
         
         <AdminNavbar />
+        
     </div>
     
   )

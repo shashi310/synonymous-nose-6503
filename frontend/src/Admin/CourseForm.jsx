@@ -3,9 +3,10 @@ import { styled } from "styled-components";
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { getProduct } from "../redux/AdminReducer/action";
 import { patchProduct } from "../redux/AdminReducer/action";
+import { useParams } from 'react-router-dom';
 
 const CourseForm = () => {
-  let id="64ebb516e03ad3667ea43df2"
+  const {id}= useParams()
   const [review, setReview] = useState([]);
   const [rName, setrName] = useState("");
   const [rRating, setrRating] = useState("");
@@ -76,8 +77,9 @@ const CourseForm = () => {
       degrees,
     };
     setFormData([...formData, data]);
-    console.log("formdata",formData[formData.length-1]);
-    dispatch(patchProduct(id,formData[formData.length-1]));
+    console.log("formdata",data);
+   
+    dispatch(patchProduct(id,data));
   };
 
   console.log(formData);
@@ -407,7 +409,7 @@ h3 {
   font-weight: 700;
 }
 input {
-  width: 100%;
+  width: 95%;
   border: 1px solid black;
   padding: 0px 3px 0px 3px;
   margin: 10px;
