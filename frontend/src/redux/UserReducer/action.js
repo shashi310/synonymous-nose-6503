@@ -1,6 +1,9 @@
 import axios from "axios";
 
 import {
+  COURSE_ERROR,
+  COURSE_LOADING,
+  COURSE_SUCESS,
   actionLoginError,
   actionLoginLoading,
   actionLoginSuccess,
@@ -51,4 +54,31 @@ export function capitalizeFirstLetter(string) {
   const words = string?.split(' ');
   const capitalizedWords = words?.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
   return capitalizedWords?.join(' ');
+}
+
+
+
+// get all courses
+
+export const getCourses=()=>(dispatch)=>{
+
+    dispatch({type:COURSE_LOADING})
+
+  fetch("https://energetic-wasp-hose.cyclic.cloud/courses",{
+            headers:{
+                "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
+            }
+        }).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+            console.log(res.Courses)
+           
+            dispatch({type:COURSE_SUCESS,payload:res.Courses})
+            dispatch({type:COURSE_LOADING})
+            return res.Courses
+        }).catch((err)=>{
+          dispatch({type:COURSE_ERROR})
+        })
+
 }

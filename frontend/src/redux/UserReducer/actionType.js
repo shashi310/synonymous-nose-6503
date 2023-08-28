@@ -9,6 +9,13 @@ export const SINGUP_ERROR = "SINGUP_ERROR";
 export const ISUSER_TRUE = "ISUSER_TRUE";
 export const ISUSER_FALSE = "ISUSER_FALSE"
 
+
+// courseReducer Requests;
+export const COURSE_LOADING="COURSE_LOADING";
+export const COURSE_ERROR="COURSE_ERROR";
+export const COURSE_SUCESS="COURSE_SUCESS"
+
+
 export function actionLoginLoading(){
     return {type: LOGIN_LOADING}
 }

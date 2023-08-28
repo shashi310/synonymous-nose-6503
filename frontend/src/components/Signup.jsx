@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-import Navbar from "../pages/Navbar";
+import Navbar from "./Navbar"
+
 import {
   Box,
   Button,
