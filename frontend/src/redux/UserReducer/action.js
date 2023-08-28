@@ -12,7 +12,27 @@ import {
   actionsingUpSuccess,
 } from "./actionType";
 
-let baseURL = "https://energetic-wasp-hose.cyclic.cloud";
+let baseURL = "https://energetic-wasp-hose.cyclic.cloud/";
+
+// export const loginFetch = (value) => (dispatch) => {
+//   dispatch(actionLoginLoading());
+//   return axios
+//     .post(`${baseURL}users/login`, value)
+//     .then((res) => {
+//       dispatch(actionLoginSuccess(res.data));
+//       localStorage.setItem(
+//         "user",
+//         JSON.stringify({email: res.data.user.email,name: res.data.user.name,role:res.data.user.role,token: res.data.token,isAuth: true})
+//       );
+//       console.log(res);
+//     })
+//     .catch((err) => {
+//       dispatch(actionLoginError(err.message));
+//       console.log(err);
+//     });
+// };
+
+
 
 export const loginFetch = (value) => (dispatch) => {
   dispatch(actionLoginLoading());
@@ -30,7 +50,7 @@ export const loginFetch = (value) => (dispatch) => {
     .catch((err) => {
       dispatch(actionLoginError(err.message));
       console.log(err);
-    });
+    });
 };
 
 

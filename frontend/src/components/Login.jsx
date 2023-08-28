@@ -8,6 +8,7 @@ import {
   Input,
   Spinner,
   Text,
+  Link,
   keyframes,
 } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
@@ -16,6 +17,7 @@ import { BsFacebook } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { loginFetch } from "../redux/UserReducer/action";
 import { useNavigate } from "react-router-dom";
+
 // import GoogleAuth from "../pages/GoogleAuth";
 
 const Login = () => {
@@ -60,7 +62,7 @@ const Login = () => {
 
   function handleInput(e) {
     const { value, name } = e.target;
-    if (name == "email") {
+    if (name === "email") {
       setForm({ ...form, email: value });
     } else {
       setForm({ ...form, password: value });
@@ -156,6 +158,7 @@ const Login = () => {
                   _focus={{ outline: "none" }}
                   name="email"
                   value={form.email}
+                  onClick={showInput}
                   onChange={handleInput}
                 />
               </Box>
@@ -166,6 +169,7 @@ const Login = () => {
               p="20px"
               id="password"
               m="5px 0"
+              name="password"
               onClick={showInput}
               ref={passwordbox}
             >
@@ -204,6 +208,7 @@ const Login = () => {
                   {userStore.loading ? <Spinner color="white" /> : "Log in"}
                 </Heading>
               </Button>
+              <Text>New User Resister <Link href={"/signup"} color={'blue'} cursor={'pointer'}>Click Here</Link></Text>
             </Box>
           </Box>
         </Box>

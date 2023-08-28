@@ -11,167 +11,134 @@ const SingleCoursePage = () => {
   const [singleData, setSingleData] = useState(null);
 
 
-  const {id}=useParams()
+  const { id } = useParams()
 
   const fetchData = async (dataId) => {
     try {
-      const response = await fetch(`https://energetic-wasp-hose.cyclic.cloud/courses`,{
-        headers:{
-          "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
-      }
+      const response = await fetch(`https://energetic-wasp-hose.cyclic.cloud/courses`, {
+        headers: {
+          "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
+        }
       });
       const data = await response.json();
-      console.log(dataId,data)
-      const newData=data.Courses.find((ele)=>ele._id===dataId)
-      console.log("newdata",newData)
+      console.log(dataId, data)
+      const newData = data.Courses.find((ele) => ele._id === dataId)
+      console.log("newdata", newData)
       setSingleData(newData);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
 
-useEffect(()=>{ 
+  useEffect(() => {
 
-fetchData(id)
+    fetchData(id)
 
- 
-  // fetch("https://energetic-wasp-hose.cyclic.cloud/courses",{
-  //           headers:{
-  //               "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
-  //           }
-  //       }).then((res)=>{
-  //           return res.json()
-  //       }).then((res)=>{
-  //           console.log(res)
-            
-  //       }) 
-}, []);
+  }, []);
 
 
-
-  //  const {
-  //     img,
-  //     university,
-  //     start_from,
-  //     total_enrolled,
-  //     course,
-  //     instructor,
-  //     rating,
-  //     reviews,
-  //     reviews_txt,
-  //     course_duration,
-  //     skills,
-  //     modules,
-  //     Recommended,
-  //     Degrees,
-  //   } = singleData;
-  
   return (
     <>
-    <Divv >
-    <Navbar/>
-    </Divv>
-  
-   <Div className="single-course">
+      <Divv >
+        <Navbar />
+      </Divv>
 
-  
-   <div className="course-card">
-   <h1>{singleData?.course}</h1>
-   <img src={singleData?.img} alt="Course" />
-   {/* <div className="image-container">
-        <img src={img} alt="Course" />
-      </div> */}
- 
-   <p>University: {singleData?.university}</p>
-   <p>Start Date: {singleData?.start_from}</p>
-   <p>Total Enrolled: {singleData?.total_enrolled}</p>
-   <p>Instructor: {singleData?.instructor}</p>
-   <p>
-  <i className="fas fa-star icon"></i>
-  Rating: {singleData?.rating}
-</p>
-   <p>Reviews: {singleData?.reviews}</p>
-   </div>
-   <div className="course-details">
-   <h2>Course Details</h2>
-   <p>Duration: {singleData?.course_duration}</p>
-   <p>Skills: {singleData?.skills.join(', ')}</p>
-   <h3>Modules:</h3>
-   <ul className="modules-list">
-     {singleData?.modules.map((module, index) => (
-       <li key={index}>{module}</li>
-     ))}
-   </ul>
-   </div>
-   <h2>Student Reviews</h2>
-   <div className="reviews">
-     {singleData?.reviews_txt.map((review, index) => (
-       <div key={index} className="review">
-          <Avatar name={review.name} src='https://bit.ly/dan-abramovk' />
-         <p>{review.name}</p>
-         
-         <p>Rating: {review.rate}</p>
-         <p>{review.Body}</p>
-       </div>
-     ))}
-   </div>
-   <div className="sidebyside">
-   <div className="recommended-courses">
-   <h2>Recommended Courses</h2>
-   <ul>
-     {singleData?.Recommended.map((course, index) => (
-       <li key={index}>
-         <p>University: {course.university}</p>
-         <p>{course.body}</p>
-       </li>
-     ))}
-   </ul>
-</div>
+      <Div className="single-course">
 
-<div className="degrees">
-   <h2>Degrees</h2>
-   <ul>
-     {singleData?.Degrees.map((degree, index) => (
-       <li key={index}>
-         <p>University: {degree.university}</p>
-         <p>Degree: {degree.deg}</p>
-       </li>
-     ))}
-   </ul>
-   </div>
-   </div>
-   <div className="vertical-card">
-      <div className="card-content">
-      <video controls>
-          <source src="your-video-source.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <h2>₹429</h2>
-        <p>Original Price ₹3,299</p>
-       
-        <Badge colorScheme='purple'>Discount 87% off</Badge>
-        <p>5 days left at this price!</p>
-        <button className="enroll-button"><Link to="/payment">Buy Now</Link></button>
-        
-        <p>30-Day Money-Back Guarantee</p>
-        <p>This course includes:</p>
-        <ul>
-          <li>62 hours on-demand video</li>
-          <li>Access on mobile and TV</li>
-          <li>Full lifetime access</li>
-          <li>Certificate of completion</li>
-        </ul>
-      </div>
-    </div>
- </Div>
- </>
-);
+
+        <div className="course-card">
+          <h1>{singleData?.course}</h1>
+          <img src={singleData?.img} alt="Course" />
+          <p>University: {singleData?.university}</p>
+          <p>Start Date: {singleData?.start_from}</p>
+          <p>Total Enrolled: {singleData?.total_enrolled}</p>
+          <p>Instructor: {singleData?.instructor}</p>
+          <p>
+            <i className="fas fa-star icon"></i>
+            Rating: {singleData?.rating}
+          </p>
+          <p>Reviews: {singleData?.reviews}</p>
+        </div>
+        <div className="course-details">
+          <h2>Course Details</h2>
+          <p>Duration: {singleData?.course_duration}</p>
+          <p>Skills: {singleData?.skills.join(', ')}</p>
+          <h3>Modules:</h3>
+          <ul className="modules-list">
+            {singleData?.modules.map((module, index) => (
+              <li key={index}>{module}</li>
+            ))}
+          </ul>
+        </div>
+        <h2>Student Reviews</h2>
+        <div className="reviews">
+          {singleData?.reviews_txt.map((review, index) => (
+            <div key={index} className="review">
+              <Avatar name={review.name} src='https://bit.ly/dan-abramovk' />
+              <p>{review.name}</p>
+
+              <p>Rating: {review.rate}</p>
+              <p>{review.Body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="sidebyside">
+          <div className="recommended-courses">
+            <h2>Recommended Courses</h2>
+            <ul>
+              {singleData?.Recommended.map((course, index) => (
+                <li key={index}>
+                  <p>University: {course.university}</p>
+                  <p>{course.body}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="degrees">
+            <h2>Degrees</h2>
+            <ul>
+              {singleData?.Degrees.map((degree, index) => (
+                <li key={index}>
+                  <p>University: {degree.university}</p>
+                  <p>Degree: {degree.deg}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="vertical-card">
+          <div className="card-content">
+            <video controls>
+              <source src="your-video-source.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>₹429</h2>
+            <p>Original Price ₹3,299</p>
+
+            <Badge colorScheme='purple'>Discount 87% off</Badge>
+            <p>5 days left at this price!</p>
+            <button className="enroll-button"><Link to="/payment">Buy Now</Link></button>
+
+            <p>30-Day Money-Back Guarantee</p>
+            <p>This course includes:</p>
+            <ul>
+              <li>62 hours on-demand video</li>
+              <li>Access on mobile and TV</li>
+              <li>Full lifetime access</li>
+              <li>Certificate of completion</li>
+            </ul>
+          </div>
+        </div>
+      </Div>
+    </>
+  );
 }
 const Divv = styled.div`
   width:76%;
   position: sticky;
   top: 0;
-  background-color:#fff;
+  background-color:#E1F5FE;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a shadow for styling */
   z-index: 100;
 `
@@ -201,19 +168,13 @@ const Div = styled.div`
     transform: translateY(-5px);
   }
 
-  .image-container {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    border-radius: 50%;
-    margin-bottom: 15px;
-
-    img {
-      width: 100%;
+  
+    .course-container img {
+      width: 129%;
       height: 100%;
       object-fit: cover;
     }
-  }
+  
 
   h2 {
     font-size: 1.5rem;

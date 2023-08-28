@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
-import Navbar from "./Navbar"
-
+import Navbar from "./Navbar";
 import {
   Box,
   Button,
@@ -351,4 +350,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUp;
