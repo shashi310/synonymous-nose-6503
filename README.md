@@ -1,11 +1,4 @@
-
-<html>
-<head>
-  <title>SkillVantage Hub - Premier Online Learning Platform</title>
-</head>
-
-<body>
-  <h1>Welcome to SkillVantage Hub</h1>
+ <h1>Welcome to SkillVantage Hub</h1>
   <p>Experience a world of knowledge with our vast collection of courses, just like Coursera. Master new skills, explore diverse subjects, and advance your career. Join us to access expert-led courses and elevate your learning journey. Your future starts here!</p>
 
   <h1>SkillVantage Hub App</h1>
@@ -16,7 +9,7 @@
      <li><a href="https://energetic-wasp-hose.cyclic.cloud">Backend Link</a></li>
   </ul>
 
-  <div>
+ 
     <p>The SkillVantage full stack App is a modern web application designed to explore diverse subjects, and advance your career. Developed by Shahshikant Yadav, Vishal Giri, Sharad paradhi,Vishal kumar</p>
     <br />
 
@@ -59,11 +52,11 @@
 </ul>
 
 <h3>Express</h3>
-<ul>
-  <li>Create web applications and APIs using the minimalistic Express framework.</li>
-  <li>Integrate middleware for tasks like authentication and error handling.</li>
-  <li>Define API endpoints and handle HTTP requests using clean routing.</li>
-</ul>
+
+  <p>Create web applications and APIs using the minimalistic Express framework.</p>
+  <p>Integrate middleware for tasks like authentication and error handling.</p>
+  <p>Define API endpoints and handle HTTP requests using clean routing.</p>
+
 
     <h3>Chakra-UI Integration</h3>
     <p>Utilizes Chakra-UI for consistent, aesthetically pleasing design across components.</p>
@@ -77,9 +70,9 @@
       <li><a href="https://github.com/sharadParadhi">Sharad Paradhi</a></li>
       <li><a href="https://github.com/MentalVishal">Vishal Kumar</a></li>
     </ul>
-  </div>
+ 
 
-  <div>
+
     <h3>Landing Page</h3>
     <img src="" alt="Landing Page Image"/>
 
@@ -100,6 +93,6 @@
 
     <h3>Admin Users Page</h3>
     <img src="https://ibb.co/f8DtVkx" alt="Admin Page Image"/>
-  </div>
-</body>
+ 
+
 
