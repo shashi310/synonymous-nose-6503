@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema(
     password: String,
     age: Number,
     city: String,
-    job: String,
+    Educational_Background: String,
     course:[{type: mongoose.Schema.Types.ObjectId, ref: 'course'}],
     role: {type: String,default: 'user'},
     image: String,  

@@ -33,6 +33,7 @@ let baseURL = "https://energetic-wasp-hose.cyclic.cloud/";
 // };
 
 
+
 export const loginFetch = (value) => (dispatch) => {
   dispatch(actionLoginLoading());
   return axios
@@ -55,7 +56,7 @@ export const loginFetch = (value) => (dispatch) => {
 
 export const signUpFetch = (value) => (dispatch) => {
    dispatch(actionsignUpLoading())
-  return  axios.post(`${baseURL}users/register`,value)
+  return  axios.post(`${baseURL}/users/register`,value)
     .then((res)=>{
     dispatch(actionsingUpSuccess())
         console.log(res);

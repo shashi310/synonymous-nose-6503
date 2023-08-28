@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+
 import logo from "../homeImg/logo2.jpg";
 import { Link } from 'react-router-dom';
 import { BsPersonCircle } from "react-icons/bs";
 
 
 const Navbar = () => {
+
 
   const user = JSON.parse(localStorage.getItem("user")) || {}
   
@@ -27,6 +29,10 @@ const Navbar = () => {
         </Link>
       </div>
 
+
+ 
+       
+     
 
       {/* <div>
         <button>Explore</button>
@@ -172,4 +178,6 @@ const Div = styled.nav`
   @media only screen and (min-width: 1201px) {
     /* Additional styling for extra large screens */
   }
+
 `;
+
