@@ -67,10 +67,12 @@ export const patchProduct=(id,data)=>(dispatch)=>{
       Authorization:`Bearer ${token}`
     },
     body:JSON.stringify(data)
-  }).then(res=>res.json()).then((res)=>{console.log("patch data is",res.courses);
-      dispatch({type:PATCH_PRODUCT_SUCCESS,payload:res.courses})
+  
+  }).then(res=>res.json()).then((res)=>{console.log("patch data is",res);
+      dispatch({type:PATCH_PRODUCT_SUCCESS,payload:res})
   }).catch(e=>console.log(e))
 }
+
 export const patchUser=(id,data)=>(dispatch)=>{
   dispatch({type:PRODUCT_REQUEST})
   fetch(`${BaseURL}/users/update/${id}`,{

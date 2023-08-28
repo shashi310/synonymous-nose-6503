@@ -4,13 +4,15 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button, Heading } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
+  let price=localStorage.getItem("price")||799
   const [details, setDetails] = useState({
-    totalMRP: 1500,
-    totalDiscount: 300,
-    payableAmount: 1200,
-    productCount: 3,
+    totalMRP: price,
+    totalDiscount: Math.floor(price*0.1),
+    payableAmount: Math.floor(price-(price*0.1)),
+  
   });
 
   const [customerDetails, setCustomerDetails] = useState([]);
@@ -18,7 +20,7 @@ const PaymentPage = () => {
   useEffect(() => {
     // Calculate and update the DOM with summary values here
   }, [details]);
-
+  const navigate = useNavigate();
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -33,6 +35,8 @@ const PaymentPage = () => {
       progress: undefined,
     });
     e.target.reset();
+
+    navigate("/dashboard");
     
   };
 

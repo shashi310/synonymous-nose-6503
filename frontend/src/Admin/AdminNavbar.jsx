@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import logo from "../homeImg/logo2.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -10,9 +10,14 @@ console.log(user.user);
 
   return (
     <DIV>
-      <h2 style={{
+      {/* <h2 style={{
         paddingLeft:"30px",
-      }}>ADMIN PANNEL</h2>
+      }}>ADMIN PANNEL</h2> */}
+      <Link to="/"  >
+          <img src={logo} alt="logo" style={{
+            height:"80px"
+          }}/>
+        </Link>
      
       <Link to={"/admin/dashboard"}><button>Dashboard</button> </Link>
       

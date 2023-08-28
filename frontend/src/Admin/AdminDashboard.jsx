@@ -7,7 +7,10 @@ const AdminDashboard = () => {
 
     <AdminNavbar />
 
-<h1>Dashboard</h1>
+    <img src="https://wpforms.com/wp-content/uploads/2021/12/why-password-protect-forms.png" alt="admin"  style={{
+      width: "100%",
+      height:"100vh",
+    }}/>
     </div>
     
   )

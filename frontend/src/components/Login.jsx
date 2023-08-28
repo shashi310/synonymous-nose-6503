@@ -16,7 +16,7 @@ import { DiApple } from "react-icons/di";
 import { BsFacebook } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { loginFetch } from "../redux/UserReducer/action";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 // import GoogleAuth from "../pages/GoogleAuth";
 
@@ -75,6 +75,8 @@ const Login = () => {
     console.log(form);
     dispatch(loginFetch(form)).then((res) => {
       setForm({ email: "", password: "" });
+
+      navigate("/dashboard")
     });
   }
 

@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import logo from "../homeImg/logo2.jpg";
 import { Link } from 'react-router-dom';
 import { BsPersonCircle } from "react-icons/bs";
-
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
-
+const navigate= useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || {}
   
   useEffect(()=>{
@@ -16,8 +16,15 @@ const Navbar = () => {
   },[user])
 
 
-  const handleChange=()=>{
-    localStorage.setItem("user",null)
+  const handleChange=(e)=>{
+   
+    // localStorage.setItem("user",null)
+    if(e.target.value=="2"){
+      localStorage.clear();
+    }else if(e.target.value=="3"){
+      navigate("/admin")
+    }
+
   }
   
 
@@ -53,10 +60,11 @@ const Navbar = () => {
       <div >
         <button >
           <span className='login'>{user.isAuth ?
-          <select value="">
-          <option value="">{user.user}</option>
-           <option value="2"> <Link onClick={handleChange}> Logout</Link></option>
-           <option value="2">Admin</option>
+
+          <select value="" onChange={handleChange}>
+          <option value="1">{user.user}</option>
+           <option value="2"> <button> Logout</button></option>
+           <option value="3">Admin</option>
          </select>
           : <Link to={"/login"}>Join for free</Link>}</span>
 
@@ -75,6 +83,7 @@ const SearchIcon = styled.span`
   
 `;
 const Div = styled.nav`
+
   box-sizing: 0px;
   padding:0px;
   margin: 0px;
