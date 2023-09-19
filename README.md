@@ -7,7 +7,7 @@
   </ul>
 
 <div> <p>
-The SkillVantage full stack App is a modern web application designed to explore diverse subjects, and advance your career. Developed by Shahshikant Yadav, Vishal Giri, Sharad paradhi,Vishal kumar
+The SkillVantage full stack App is a modern web application designed to explore diverse subjects, and advance your career. Experience a world of knowledge with our vast collection of courses, just like Coursera. Master new skills, explore diverse subjects, and advance your career. Join us to access expert-led courses and elevate your learning journey. Your future starts here .Developed by Shahshikant Yadav, Vishal Giri, Sharad paradhi,Vishal kumar
 </p>
 <br />
 <h2>Features</h2>
@@ -22,30 +22,20 @@ The SkillVantage full stack App is a modern web application designed to explore 
  <h3>CRUD Operations</h3>
     <p>Perform essential CRUD operations on credit score data. Admin can add, view, update, and delete records.</p>
 
-   <h3>Admin Page</h3>
+<h3>Admin Page</h3>
 <p>Manage user roles, permissions, and administrative tasks through an intuitive admin dashboard.</p>
 
 <h3>Login/SignUp Functionality</h3>
     <p>Secure login/signup system protects sensitive credit score data, offering personalized access.</p>
 
-<h3>Node.js</h3>
-<ul>
-  <li>Utilize event-driven architecture for handling concurrent connections.</li>
-  <li>Harness a vast module library to streamline web server development.</li>
-  <li>Ensure cross-platform compatibility for consistent application deployment.</li>
-</ul>
+<h3>Node.js Powered Backend</h3>
+<p> backend is powered up with Node.js: Efficient, event-driven JavaScript runtime for seamless server-side development in our full-stack project</p>
 
-<h3>MongoDB</h3>
+<h3>MongoDB Integrated Database</h3>
+<p>MongoDB Integration: Scalable, flexible NoSQL database for seamless data management in our full-stack project. JSON-like documents for effortless integration.</p>
 
-  <li>Benefit from a flexible NoSQL database for unstructured data management.</li>
-  <li>Scale horizontally with sharding to accommodate large datasets and traffic.</li>
-  <li>Adapt to evolving data structures through dynamic schema changes.</li>
-
-  <h3>Express</h3>
-  <p>Create web applications and APIs using the minimalistic Express framework.</p>
-  <p>Integrate middleware for tasks like authentication and error handling.</p>
-  <p>Define API endpoints and handle HTTP requests using clean routing.</p>
-
+  <h3>Express JS integration</h3>
+  <p>Express.js: Minimalist, fast web application framework for Node.js. Streamline routing and middleware for robust full-stack development.</p>
     
     
  <h3>Chakra-UI Integration</h3>
@@ -64,31 +54,31 @@ The SkillVantage full stack App is a modern web application designed to explore 
 
 <div> 
     <h3>Landing Page</h3>
-    <img src="https://ibb.co/RQRNTps" alt="Landing Page Image"/>
+    <img src="https://i.ibb.co/xzxYqSB/Landing-Page.png" alt="Landing Page Image"/>
 </div>
 <div>
     <h3>Dashboard Page</h3>
-    <img src="https://ibb.co/m8WBd4m" alt="Dashboard Image"/>
+    <img src="https://i.ibb.co/87TLfjb/Dash-Board.png" alt="Dashboard Image"/>
 </div>
 <div>
     <h3>Login page</h3>
-    <img src="https://ibb.co/4Z0rtZp" alt="Credit Info Page Image"/>
+    <img src="https://i.ibb.co/Kj8vhjW/Login.png" alt="Credit Info Page Image"/>
 </div>
 <div>
     <h3>Admin Page</h3>
-    <img src="https://ibb.co/PMDCFYB" alt="Account Information Image"/>
+    <img src="https://i.ibb.co/vhXzVB2/Admin-Dashboard.png" alt="Account Information Image"/>
 </div>
 <div>
     <h3>Single Product Page </h3>
-    <img src="" alt="Account Information Image"/>
+    <img src="https://i.ibb.co/dgYcXDS/Single-Page.png" alt="Account Information Image"/>
 </div>
 <div>
     <h3>Admin Courses Page</h3>
-    <img src="https://ibb.co/ySwL4XD" alt="Admin Page Image"/>
+    <img src="https://i.ibb.co/hfPpYyk/Admin-Courses.png" alt="Admin Page Image"/>
 </div>
 <div>
     <h3>Admin Users Page</h3>
-    <img src="https://ibb.co/f8DtVkx" alt="Admin Page Image"/>
+    <img src="https://i.ibb.co/n3Pfq7L/Admin-Users.png" alt="Admin Page Image"/>
  </div>
 
 
