@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+
 import Navbar from "./Navbar";
 import {
   Box,
@@ -13,13 +14,15 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { AiOutlineEyeInvisible, AiFillEye } from "react-icons/ai";
+import "boxicons";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { signUpFetch } from "../redux/UserReducer/action";
-import {BiError} from 'react-icons/bi'
+import { BiError } from "react-icons/bi";
 import { actionsingUpError } from "../redux/UserReducer/actionType";
+import styled from "styled-components";
 
 const SignUp = () => {
   const emailInput = useRef(null);
@@ -44,8 +47,8 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const [eyeclose, seteyeMoment] = useState(false);
-  const toast = useToast()
-  const [toastkey,setToastKey] = useState(true)
+  const toast = useToast();
+  const [toastkey, setToastKey] = useState(true);
 
   // will show the input element when click on element
   function showInput(e) {
@@ -106,18 +109,17 @@ const SignUp = () => {
       : (passwordInput.current.type = "password");
   }
 
-
   // handle promotion
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
     setForm({ ...form, isPromotion: !isChecked });
   };
 
-// Error toast
+  // Error toast
   const showToast = () => {
     toast({
-        position: 'top-right',
-        top:'100px',
+      position: "top-right",
+      top: "100px",
       render: () => (
         <Box color="white" p={3} bg="red.500">
           {/* {userStore.isError} */}
@@ -129,8 +131,8 @@ const SignUp = () => {
   // Sucess Toast
   const showSucessToast = () => {
     toast({
-        position: 'top-right',
-        top:'100px',
+      position: "top-right",
+      top: "100px",
       render: () => (
         <Box color="white" p={3} bg="green.500">
           Sign Up Sucess
@@ -139,9 +141,9 @@ const SignUp = () => {
     });
   };
 
-  if(userStore.isError && toastkey){
+  if (userStore.isError && toastkey) {
     showToast();
-    setToastKey(false)
+    setToastKey(false);
   }
 
   // SignUp function
@@ -149,205 +151,101 @@ const SignUp = () => {
     setToastKey(true);
     const { email, password, confirmPassword, name } = form;
     if (!email || !password || !confirmPassword || !name) {
-      dispatch(actionsingUpError('All fields are required'));
+      dispatch(actionsingUpError("All fields are required"));
       return;
     }
 
     if (confirmPassword !== password) {
-      dispatch(actionsingUpError('Password does not match'));
+      dispatch(actionsingUpError("Password does not match"));
       return;
     }
 
-  
-
-    dispatch(signUpFetch(form))
-      .then((res) => {
-        setForm({ email: '', password: '', confirmPassword: '', name: '' });
-        showSucessToast();
-      })
+    dispatch(signUpFetch(form)).then((res) => {
+      setForm({ email: "", password: "", confirmPassword: "", name: "" });
+      showSucessToast();
+    });
   }
 
-
   return (
-    <Box>
+    <div>
       <Box>
         <Navbar />
       </Box>
-      <Box
-        display="flex"
-        justifyContent="center"
-        onClick={blockInput}
-        ref={backgroundRef}
-        pt='100px'
-      >
-        <Box w={{ base: "90%", sm: "80%", md: "40%", lg: "30%" }}>
-          <Box mt='15px'>
-            <Heading size="md">Sign up And Start Learning</Heading>
-          </Box>
-          {/* 2nd box  */}
-          <Box  mt="35px">
-            {/* name */}
-            <Box
-              border="1px solid"
-              p="20px"
-              id="name"
-              m="5px 0"
-              onClick={showInput}
-              ref={namebox}
-            >
-              <Box>
-                <Heading id="name" size="xs">
-                  Name
-                </Heading>
-              </Box>
-              <Box>
-                <Input
-                  type="text"
-                  display="none"
-                  ref={nameInput}
-                  border="none"
-                  size="sm"
-                  focusBorderColor="transparent"
-                  _focus={{ outline: "none" }}
-                  name="name"
-                  value={form.name}
-                  onChange={handleInput}
-                />
-              </Box>
-            </Box>
-            {/* email  */}
-            <Box
-              border="1px solid"
-              p="20px"
-              id="email"
-              m="5px 0"
-              onClick={showInput}
-              ref={emailbox}
-            >
-              <Box>
-                <Heading id="email" size="xs">
-                  Email
-                </Heading>
-              </Box>
-              <Box>
-                <Input
-                  display="none"
-                  ref={emailInput}
-                  border="none"
-                  p="0px"
-                  focusBorderColor="transparent"
-                  _focus={{ outline: "none" }}
-                  name="email"
-                  value={form.email}
-                  onChange={handleInput}
-                />
-              </Box>
-            </Box>
-            {/* password */}
-            <Box
-              border="1px solid"
-              p="20px"
-              id="password"
-              m="5px 0"
-              onClick={showInput}
-              ref={passwordbox}
-            >
-              <Box display="flex" justifyContent="space-between">
-                <Box onClick={showInput} w="100%">
-                  <Heading id="password" size="xs">
-                    Password
-                  </Heading>
-                </Box>
-                <Box onClick={showPassword}>
-                  {eyeclose ? (
-                    <AiFillEye size="20px" />
-                  ) : (
-                    <AiOutlineEyeInvisible size="20px" />
-                  )}
-                </Box>
-              </Box>
-              <Box>
-                <Input
-                  type="password"
-                  display="none"
-                  ref={passwordInput}
-                  border="none"
-                  size="sm"
-                  focusBorderColor="transparent"
-                  _focus={{ outline: "none" }}
-                  name="password"
-                  value={form.password}
-                  onChange={handleInput}
-                />
-              </Box>
-            </Box>
-            {/* confirm password */}
-            <Box
-              border="1px solid"
-              p="20px"
-              id="confirmPassword"
-              m="5px 0"
-              onClick={showInput}
-              ref={confirmPasswordbox}
-            >
-              <Box>
-                <Heading id="confirmPassword" size="xs">
-                  Confirm Password
-                </Heading>
-              </Box>
-              <Box>
-                <Input
-                  type="password"
-                  display="none"
-                  ref={confirmPasswordInput}
-                  border="none"
-                  size="sm"
-                  focusBorderColor="transparent"
-                  _focus={{ outline: "none" }}
-                  name="confirmPassword"
-                  value={form.confirmPassword}
-                  onChange={handleInput}
-                />
-              </Box>
-            </Box>
 
-            <Box display="flex">
-              <Box display="inline" p="15px">
-                <input
-                  type="checkbox"
-                  checked={isChecked}
-                  onChange={handleCheckboxChange}
-                />
-              </Box>
-              <Box display="inline">
-                <Text p="10px">
-                  Send me special offers, personalized recommendations, and
-                  learning tips.
-                </Text>
-              </Box>
-            </Box>
+      <h1 style={{ textAlign: "center", marginTop: "3%", fontSize: "2rem" }}>
+        Sign up And Start Learning
+      </h1>
 
-            {/* button  */}
-            <Box mt="15px">
-              <Button
-                w="100%"
-                color="white"
-                bg="#0056D2"
-                _hover={{ background: "#1E88E5", color: "#CFD8DC" }}
-                borderRadius="0"
-                textAlign="center"
-                onClick={handleSignUp}
-              >
-                <Heading size="xs">
-                  {userStore.loading ? <Spinner color="white" /> : "Sign Up"}
-                </Heading>
-              </Button>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+      <Div id="form">
+        <input type="text" placeholder="Name" />
+        <br />
+        <input type="email" placeholder="Email" />
+        <br />
+
+        <div id="pass">
+          <input
+            style={{ width: "90%", margin: "auto" }}
+            type="password"
+            placeholder="Password"
+          />
+
+          <span id="icon">
+            <box-icon name="hide"> </box-icon>
+          </span>
+        </div>
+
+        <br />
+        <input type="password" placeholder="Confirm Password" />
+        <br />
+        <button id="submit">SignUp</button>
+      </Div>
+    </div>
   );
 };
 
-export default SignUp;
+export default SignUp;
+
+const Div = styled.div`
+  margin: auto;
+  width: 35%;
+  padding: 5% 2%;
+  /* border: 1px solid blue; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin-top: 2%;
+  input {
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 550;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    margin: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+  #submit {
+    width: 100%;
+    padding: 2%;
+    margin-top: 5%;
+    background-color: blue;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 5px;
+  }
+  #pass {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    margin: auto;
+    margin-top: 3%;
+    height: 3rem;
+  }
+  #icon {
+    padding: 2%;
+  }
+`;
