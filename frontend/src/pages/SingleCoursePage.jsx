@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const SingleCoursePage = () => {
   const [singleData, setSingleData] = useState(null);
-
+  let user=JSON.parse(localStorage.getItem('user'));
 
   const { id } = useParams()
 
@@ -17,7 +17,7 @@ const SingleCoursePage = () => {
     try {
       const response = await fetch(`https://energetic-wasp-hose.cyclic.cloud/courses`, {
         headers: {
-          "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
+          "Authorization":`Bearer ${user.token}`
         }
       });
       const data = await response.json();

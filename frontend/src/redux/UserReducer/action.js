@@ -13,6 +13,7 @@ import {
 } from "./actionType";
 
 let baseURL = "https://energetic-wasp-hose.cyclic.cloud/";
+let user=localStorage.getItem('user');
 
 // export const loginFetch = (value) => (dispatch) => {
 //   dispatch(actionLoginLoading());
@@ -45,7 +46,7 @@ export const loginFetch = (value) => (dispatch) => {
         "user",
         JSON.stringify({token: res.data.token,isAuth: true,user:value.password})
       );
-      console.log(res);
+      console.log("loginres",res);
     })
     .catch((err) => {
       dispatch(actionLoginError(err.message));
@@ -86,7 +87,7 @@ export const getCourses=()=>(dispatch)=>{
 
   fetch("https://energetic-wasp-hose.cyclic.cloud/courses",{
             headers:{
-                "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
+              "Authorization":`Bearer ${user.token}`
             }
         }).then((res)=>{
             return res.json()

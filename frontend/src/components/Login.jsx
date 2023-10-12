@@ -26,7 +26,7 @@ const Login = () => {
   const emailbox = useRef(null);
   const passwordInput = useRef(null);
   const passwordbox = useRef(null);
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: "shashi@gmail.com", password: "shashi" });
 
   const userStore = useSelector((store) => store.UserReducer);
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const Login = () => {
   function handleLogin() {
     console.log(form);
     dispatch(loginFetch(form)).then((res) => {
-      setForm({ email: "", password: "" });
+      // setForm({ email: "", password: "" });
 
       navigate("/dashboard")
     });
@@ -98,13 +98,13 @@ const Login = () => {
       <Box
         display="flex"
         justifyContent="center"
-        pt="100px"
+        pt="20px"
         onClick={blockInput}
         ref={backgroundRef}
       >
-        <Box w={{ base: "90%", sm: "80%", md: "40%", lg: "30%" }}>
-          <Box mt='15px'>
-            <Heading size="md">Log in to your Account</Heading>
+        <Box w={{ base: "90%", sm: "80%", md: "40%", lg: "30%" }} mt={0}>
+          <Box mt='5px'>
+            <Heading size="md" mx="20%">Log in to your Account</Heading>
           </Box>
           {/* 2nd box  */}
           <Box mt="35px">
