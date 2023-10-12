@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BannerSlider from "../components/BannerSlider";
@@ -7,7 +7,23 @@ import banner from "../homeImg/b3.png";
 import banner1 from "../homeImg/b5.png";
 import { styled } from "styled-components";
 import CategoryList from "../components/CategoryList";
+
+import {  useDispatch, useSelector } from 'react-redux'
+import { getProduct, } from '../redux/AdminReducer/action';
+
 const Homepage = () => {
+const dispatch = useDispatch()
+  // const courses=useSelector((store)=>{
+  //   return store.UserReducer.token
+  // })
+  
+  // console.log("token",courses);
+  
+  useEffect(()=>{
+    dispatch(getProduct())
+    
+  },[])
+
   return (
     <div>
       <Navbar />

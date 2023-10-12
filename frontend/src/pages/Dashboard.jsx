@@ -6,21 +6,37 @@ import Footer from '../components/Footer'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourses } from '../redux/UserReducer/action'
+import { useNavigate } from 'react-router-dom'
 
 
+import {  getProduct } from '../redux/AdminReducer/action';
 
 
 
 const Dashboard = () => {
+    
+    // const data=useSelector((store)=>{
+    //     return store.AdminReducer.data
+    //   })
+      
+    //   console.log("course",data);
+      
+    //   useEffect(()=>{
+    //     dispatch(getProduct())
+        
+    //   },[])
 
+
+const navigate=useNavigate()
     const [showAll, setShowAll] = useState(false);
     const [data,setData]=useState([])
 
    
-  
-
-   
+  let user=JSON.parse(localStorage.getItem('user'));
+if(!user){
     
+    navigate("/login")
+}
 
     const dispatch=useDispatch()
 
@@ -33,7 +49,7 @@ const Dashboard = () => {
        
         fetch("https://energetic-wasp-hose.cyclic.cloud/courses",{
             headers:{
-                "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyODY1MCwiZXhwIjoxNjkzNzMzNDUwfQ.tAXBywpDLMOdIMRVbptGjStLb1t2IoQqjUBeL83pN3Y`
+                "Authorization":`Bearer ${user?.token}`
             }
         }).then((res)=>{
             return res.json()
@@ -44,7 +60,7 @@ const Dashboard = () => {
         })
 
 
-        dispatch(getCourses())
+        // dispatch(getCourses())
     
         
         
@@ -86,7 +102,7 @@ const Dashboard = () => {
             <div className="App">
                 <p className='App-earn'>Earn Your Degree</p>
                 <div className="card-container">
-                    {data.slice(0, showAll ? data.length : 4).map((course, index) => (
+                    {data?.slice(0, showAll ? data.length : 4)?.map((course, index) => (
                         <Card 
                         key={index}
                         {...course}
@@ -104,7 +120,7 @@ const Dashboard = () => {
             <div className="App">
                 <p className='App-earn'>Most Popular Certificates</p>
                 <div className="card-container">
-                    {data.reverse().slice(0, showAll ? data.length : 4).map((course, index) => (
+                    {data?.slice(0, showAll ? data.length : 4)?.map((course, index) => (
                         <Card
                          key={index}
                         {...course}
@@ -123,7 +139,7 @@ const Dashboard = () => {
             <div className="App">
                 <p className='App-earn'></p>
                 <div className="card-container">
-                    {data.slice(0, showAll ? data.length : 4).map((course, index) => (
+                    {data?.slice(0, showAll ? data.length : 4)?.map((course, index) => (
                         <Card key={index} {...course} 
                         Earn={"New Courses"}
                         />

@@ -10,14 +10,28 @@ import { deleteUsers, getUser } from '../redux/AdminReducer/action';
 import { patchUser } from '../redux/AdminReducer/action';
 
 const AdminUsers = () => {
-
+  let user=JSON.parse(localStorage.getItem('user'));
 const dispatch=useDispatch();
-const users=useSelector((store)=>{
-  return store.AdminReducer.users
-})
+// const users=useSelector((store)=>{
+//   return store.AdminReducer.users
+// })
+const [users,setUsers]=useState([])
+
 console.log(users);
 useEffect(()=>{
   dispatch(getUser())
+  fetch("https://energetic-wasp-hose.cyclic.cloud/users",{
+            headers:{
+                "Authorization":`Bearer ${user.token}`
+            }
+        }).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+            setUsers(res.users
+                )
+        })
+  
 },[])
  
 
