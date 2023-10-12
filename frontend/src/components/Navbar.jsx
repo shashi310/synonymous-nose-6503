@@ -5,8 +5,12 @@ import logo from "../homeImg/logo2.jpg";
 import { Link } from 'react-router-dom';
 import { BsPersonCircle } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
+import {  useSelector } from "react-redux";
 
 const Navbar = () => {
+
+  const userStore = useSelector((store) => store.UserReducer);
+console.log("userStore",userStore);
 
 const navigate= useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || {}

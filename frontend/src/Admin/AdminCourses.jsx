@@ -12,14 +12,25 @@ import { deleteProduct, getProduct, patchProduct } from '../redux/AdminReducer/a
 const AdminCourses = () => {
 
 const dispatch=useDispatch();
-const courses=useSelector((store)=>{
-  return store.AdminReducer.data
-})
-
-console.log("course",courses);
-
+// const courses=useSelector((store)=>{
+//   return store.AdminReducer.data
+// })
+const[courses,getCourses] =useState([])
+// console.log("course",courses);
+let user=JSON.parse(localStorage.getItem('user'));
 useEffect(()=>{
   dispatch(getProduct())
+  fetch("https://energetic-wasp-hose.cyclic.cloud/courses",{
+            headers:{
+                "Authorization":`Bearer ${user.token}`
+            }
+        }).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+            getCourses(res.Courses
+                )
+        })
   
 },[])
  

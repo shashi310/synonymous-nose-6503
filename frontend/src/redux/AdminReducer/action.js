@@ -1,8 +1,8 @@
 import axios from "axios"
 import { ADD_PRODUCT_SUCCESS, ADD_User_SUCCESS,  GET_PRODUCT_SUCCESS, GET_User_SUCCESS, PATCH_PRODUCT_SUCCESS, PATCH_User_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionType"
 
-// const token = JSON.parse(localStorage.getItem('user'))?.token || "";
-const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyNTg1MSwiZXhwIjoxNjkzNzMwNjUxfQ.BlugfQEtyCNBJtBe3xSFgrZSK_d6t3oyx1UEXvFYTvU"
+const token = JSON.parse(localStorage.getItem('user'))?.token || "";
+// const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU4ZjI5MGVhZWRhNjFjZTJmOTliMWUiLCJ1c2VyTmFtZSI6InNoYXNoaSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MzEyNTg1MSwiZXhwIjoxNjkzNzMwNjUxfQ.BlugfQEtyCNBJtBe3xSFgrZSK_d6t3oyx1UEXvFYTvU"
 
 const BaseURL="https://energetic-wasp-hose.cyclic.cloud";
 
