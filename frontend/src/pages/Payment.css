@@ -172,7 +172,9 @@
  #pay:hover {
    background-color: #00bcd4;
  }
- 
+ .container1 input{
+  border: 1px solid black;
+ }
  .container2 {
    width: 35%;
    /* height: 800px; */

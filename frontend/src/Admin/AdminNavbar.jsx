@@ -7,6 +7,21 @@ import styled from "styled-components";
 export const AdminNavbar = () => {
 let user=JSON.parse(localStorage.getItem("user"));
 console.log(user.user);
+const navigate= useNavigate();
+
+const handleChange=(e)=>{
+   
+  // localStorage.setItem("user",null)
+  if(e.target.value=="2"){
+    localStorage.clear();
+  }else if(e.target.value=="3"){
+    navigate("/admin")
+  }else if(e.target.value=="1"){
+    navigate("/dashboard")
+  }
+
+}
+
 
   return (
     <DIV>
@@ -25,8 +40,20 @@ console.log(user.user);
 
       
       <Link to={"/admin/courses"}><button>Courses</button> </Link>
-   
-     <span>{user.user}</span>
+   <span>{user.user}</span>
+      {/* <div >
+        <button >
+         
+
+          <select value="" onChange={handleChange}>
+          <option value="1"><span>Home</span></option>
+           <option value="2">  <span>Logout</span></option>
+           <option value="3"><span>Admin</span></option>
+         </select>
+          
+
+        </button>
+      </div> */}
 
     </DIV>
   );
@@ -84,5 +111,8 @@ const DIV = styled.div`
     padding-left: 20px;
     padding-top: 7px;
     border-radius: 2px;
+  }
+  select{
+    color: black;
   }
 `;

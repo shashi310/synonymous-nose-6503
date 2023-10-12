@@ -21,9 +21,29 @@ const UserEdit = () => {
 const {id}= useParams()
 
     // let id="64eb6860527fb0c018fed42c"
-    const users=useSelector((store)=>{
-        return store.AdminReducer.users
-      })
+    // const users=useSelector((store)=>{
+    //     return store.AdminReducer.users
+    //   })
+    let user=JSON.parse(localStorage.getItem('user'));
+    const [users,setUsers]=useState([])
+
+    console.log(users);
+    useEffect(()=>{
+      dispatch(getUser())
+      fetch("https://energetic-wasp-hose.cyclic.cloud/users",{
+                headers:{
+                    "Authorization":`Bearer ${user.token}`
+                }
+            }).then((res)=>{
+                return res.json()
+            }).then((res)=>{
+                console.log(res)
+                setUsers(res.users
+                    )
+            })
+      
+    },[])
+
       console.log(users);
       const dispatch=useDispatch();
       useEffect(()=>{

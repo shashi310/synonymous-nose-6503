@@ -8,7 +8,7 @@ function auth(req, res, next) {
       if (decoded) {
         req.body.userID = decoded.userID;
         req.body.userName = decoded.userName;
-        req.body.role = decoded.role;
+        
         next();
       } else {
         res.json({ msg: "You are not authorized. Please Login again!!" });
