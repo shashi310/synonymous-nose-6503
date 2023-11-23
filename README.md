@@ -2,7 +2,7 @@
 
   <h4> To run SkillVantage website clone and click the link below:</h4>
   <ul>
-    <li><a href="https://skillvintage.vercel.app/">deployed Link</a></li>
+    <li><a href="https://skillvantage.netlify.app/">deployed Link</a></li>
      <li><a href="https://energetic-wasp-hose.cyclic.cloud">Backend Link</a></li>
   </ul>
 
